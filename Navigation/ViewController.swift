@@ -23,25 +23,21 @@ class ViewController: UIViewController {
         
         if let CustomView = Bundle.main.loadNibNamed("CustomView",
                                                      owner: nil,
-                                                     options: nil)?.first as? UIView {
+                                                     options: nil)?.first
+            as? UIView {
+            
             print("CustomView loaded")
-            print("CustomView loaded")
-            print("CustomView loaded")
-
             CustomView2.addSubview(CustomView)
 
         }
         
-        
-        // UIStoryboard(name: "Main", bundle: "MyStoryBoard")
+        // UIStoryboard(name: "Main", bundle: "CustomStoryboard")
         
     }
     
     @IBAction func didTapButton(_ sender: UIButton) {
         print(#function)
     }
-    
-    
     
 }
 
