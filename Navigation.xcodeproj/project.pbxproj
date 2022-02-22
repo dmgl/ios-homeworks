@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1FB18E0E27B863B200386836 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC7FC8827B477250011B752 /* ViewController.swift */; };
+		1FBE668627BC682A00FB384E /* AnotherStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE668527BC682A00FB384E /* AnotherStoryboard.storyboard */; };
+		1FBE668827BC683D00FB384E /* AnotherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE668727BC683D00FB384E /* AnotherViewController.swift */; };
 		1FC7FC8527B477250011B752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC7FC8427B477250011B752 /* AppDelegate.swift */; };
 		1FC7FC8727B477250011B752 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC7FC8627B477250011B752 /* SceneDelegate.swift */; };
 		1FC7FC8C27B477250011B752 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FC7FC8A27B477250011B752 /* Main.storyboard */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1FBE668527BC682A00FB384E /* AnotherStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnotherStoryboard.storyboard; sourceTree = "<group>"; };
+		1FBE668727BC683D00FB384E /* AnotherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherViewController.swift; sourceTree = "<group>"; };
 		1FC7FC8127B477250011B752 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FC7FC8427B477250011B752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FC7FC8627B477250011B752 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +73,8 @@
 				1FC7FC8827B477250011B752 /* ViewController.swift */,
 				1FF3A7FB27B9AA0A006AFA26 /* CustomView.xib */,
 				1FF3A7FD27B9B6AC006AFA26 /* CustomView.swift */,
+				1FBE668527BC682A00FB384E /* AnotherStoryboard.storyboard */,
+				1FBE668727BC683D00FB384E /* AnotherViewController.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -133,6 +139,7 @@
 			files = (
 				1FC7FC9127B477290011B752 /* LaunchScreen.storyboard in Resources */,
 				1FF3A7FC27B9AA0C006AFA26 /* CustomView.xib in Resources */,
+				1FBE668627BC682A00FB384E /* AnotherStoryboard.storyboard in Resources */,
 				1FC7FC8E27B477290011B752 /* Assets.xcassets in Resources */,
 				1FC7FC8C27B477250011B752 /* Main.storyboard in Resources */,
 			);
@@ -146,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FB18E0E27B863B200386836 /* ViewController.swift in Sources */,
+				1FBE668827BC683D00FB384E /* AnotherViewController.swift in Sources */,
 				1FF3A7FE27B9B6AC006AFA26 /* CustomView.swift in Sources */,
 				1FC7FC8527B477250011B752 /* AppDelegate.swift in Sources */,
 				1FC7FC8727B477250011B752 /* SceneDelegate.swift in Sources */,
