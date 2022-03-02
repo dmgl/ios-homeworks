@@ -10,6 +10,12 @@ import UIKit
 class CustomView: UIView {
     
     @IBOutlet weak var CustomSwitch: UISwitch!
+    @IBAction func didSwitch(_ sender: Any) {
+        if let switcher = sender as?
+            UISwitch {
+            print(switcher.isOn)
+        }
+    }
     
 }
 

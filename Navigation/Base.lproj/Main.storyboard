@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYg-qo-9Bm">
-                                <rect key="frame" x="186.5" y="780" width="41" height="50"/>
+                                <rect key="frame" x="186.5" y="775" width="41" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="7d0-8q-1T7"/>
                                 </constraints>
@@ -25,7 +25,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jHa-GP-mGz">
-                                <rect key="frame" x="173.5" y="840" width="67" height="50"/>
+                                <rect key="frame" x="173.5" y="835" width="67" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0gz-J0-uU2"/>
                                 </constraints>
@@ -33,15 +33,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
                                     <action selector="didTapButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vhz-cW-A0M"/>
-                                    <segue destination="1gt-8u-vQm" kind="show" id="Xnq-Jv-tXD"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dBu-va-IGh" userLabel="View 2" customClass="CustomView" customModule="Navigation" customModuleProvider="target">
-                                <rect key="frame" x="42" y="102" width="331" height="663"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" systemColor="systemBrownColor"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cLI-C7-b6u" userLabel="View 1">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cLI-C7-b6u" userLabel="Custom View 1">
                                 <rect key="frame" x="107" y="42" width="200" height="50"/>
                                 <subviews>
                                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="kHX-j6-6Wd">
@@ -56,11 +50,16 @@
                                     <constraint firstAttribute="height" constant="50" id="woM-Hm-NaI" userLabel="height = 50"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dBu-va-IGh" userLabel="Custom View 2" customClass="CustomView" customModule="Navigation" customModuleProvider="target">
+                                <rect key="frame" x="42" y="102" width="331" height="663"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" systemColor="systemBrownColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="iYg-qo-9Bm" firstAttribute="top" secondItem="dBu-va-IGh" secondAttribute="bottom" constant="15" id="BWD-Ih-utv"/>
+                            <constraint firstItem="iYg-qo-9Bm" firstAttribute="top" secondItem="dBu-va-IGh" secondAttribute="bottom" constant="10" id="BWD-Ih-utv"/>
                             <constraint firstItem="iYg-qo-9Bm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Q0f-l5-27Y"/>
                             <constraint firstItem="jHa-GP-mGz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VYa-G0-5Au"/>
                             <constraint firstItem="jHa-GP-mGz" firstAttribute="top" secondItem="iYg-qo-9Bm" secondAttribute="bottom" constant="10" id="r4Q-hi-o36"/>
