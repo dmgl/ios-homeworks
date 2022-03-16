@@ -108,6 +108,20 @@ class FirstViewController: UIViewController {
         print("сейчас исчезнет FirstViewController")
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // передача из FirstViewController в SecondViewController
+        // передача от первого ко второму
+        
+        guard
+            segue.identifier == "showSecondViewController",
+                let secondViewController = segue.destination as? SecondViewController
+        else {
+                return
+            }
+        
+        //secondViewController.customLabel.text = "QWERTY" // так не получится
+        secondViewController.customText = "Custom text received from first view"
+    }
 
 }

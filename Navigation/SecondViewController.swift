@@ -9,6 +9,10 @@ import UIKit
 
 class SecondViewController: UIViewController {
 
+    // передача из FirstViewController в SecondViewController
+    // передача от первого ко второму
+    var customText: String?
+    
 
     @IBOutlet weak var customLabel: UILabel!
     
@@ -26,6 +30,10 @@ class SecondViewController: UIViewController {
         customLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0).isActive = true
 
         //customLabel.frame.size.width = 100
+        
+        // передача из FirstViewController в SecondViewController
+        // передача от первого ко второму
+        self.customLabel.text = self.customText
         
 
     }
