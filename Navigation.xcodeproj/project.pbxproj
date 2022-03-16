@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F94E85127D008C1000D5592 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F94E85027D008C1000D5592 /* ProfileView.xib */; };
 		1F94E85327D008E4000D5592 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F94E85227D008E4000D5592 /* Profile.storyboard */; };
-		1F94E85527D00931000D5592 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F94E85427D00931000D5592 /* ProfileView.swift */; };
+		1F94E85527D00931000D5592 /* ProfileViewXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F94E85427D00931000D5592 /* ProfileViewXib.swift */; };
 		1F94E85927D00998000D5592 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F94E85827D00998000D5592 /* ProfileViewController.swift */; };
 		1FC7FC8527B477250011B752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC7FC8427B477250011B752 /* AppDelegate.swift */; };
 		1FC7FC8727B477250011B752 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC7FC8627B477250011B752 /* SceneDelegate.swift */; };
@@ -20,7 +20,7 @@
 /* Begin PBXFileReference section */
 		1F94E85027D008C1000D5592 /* ProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 		1F94E85227D008E4000D5592 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		1F94E85427D00931000D5592 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		1F94E85427D00931000D5592 /* ProfileViewXib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewXib.swift; sourceTree = "<group>"; };
 		1F94E85827D00998000D5592 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1FC7FC8127B477250011B752 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FC7FC8427B477250011B752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 				1FC7FC8D27B477290011B752 /* Assets.xcassets */,
 				1FC7FC8F27B477290011B752 /* LaunchScreen.storyboard */,
 				1F94E85027D008C1000D5592 /* ProfileView.xib */,
-				1F94E85427D00931000D5592 /* ProfileView.swift */,
+				1F94E85427D00931000D5592 /* ProfileViewXib.swift */,
 				1F94E85227D008E4000D5592 /* Profile.storyboard */,
 				1F94E85827D00998000D5592 /* ProfileViewController.swift */,
 				1FC7FC9227B477290011B752 /* Info.plist */,
@@ -146,7 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FC7FC8527B477250011B752 /* AppDelegate.swift in Sources */,
-				1F94E85527D00931000D5592 /* ProfileView.swift in Sources */,
+				1F94E85527D00931000D5592 /* ProfileViewXib.swift in Sources */,
 				1F94E85927D00998000D5592 /* ProfileViewController.swift in Sources */,
 				1FC7FC8727B477250011B752 /* SceneDelegate.swift in Sources */,
 			);

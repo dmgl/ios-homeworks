@@ -8,9 +8,17 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewXib" customModule="Navigation" customModuleProvider="target">
+            <connections>
+                <outlet property="prfAvatar" destination="Y9t-4v-Dmg" id="wyO-Pl-2wD"/>
+                <outlet property="prfBirthday" destination="a41-iG-AgA" id="qG0-Me-o6S"/>
+                <outlet property="prfCity" destination="lRJ-Q6-1K9" id="JZj-Yu-rcf"/>
+                <outlet property="prfName" destination="t2N-qL-Pq1" id="LOP-YR-wPg"/>
+                <outlet property="prfText" destination="bkz-3L-EpB" id="agv-Rr-pQ4"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="ProfileView" customModule="Navigation" customModuleProvider="target">
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -34,17 +42,17 @@
                     </constraints>
                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lea Seydoux" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2N-qL-Pq1">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2N-qL-Pq1">
                     <rect key="frame" x="190" y="40" width="1156" height="25"/>
                     <color key="backgroundColor" systemColor="systemOrangeColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="vyD-w2-esz"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1985-07-01" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a41-iG-AgA">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a41-iG-AgA">
                     <rect key="frame" x="190" y="102.5" width="1156" height="25"/>
                     <color key="backgroundColor" systemColor="systemGreenColor"/>
                     <constraints>
@@ -54,7 +62,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paris" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRJ-Q6-1K9">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRJ-Q6-1K9">
                     <rect key="frame" x="190" y="165" width="1156" height="25"/>
                     <color key="backgroundColor" systemColor="systemPurpleColor"/>
                     <constraints>
@@ -84,13 +92,6 @@
                 <constraint firstItem="es1-tk-CfF" firstAttribute="trailing" secondItem="lRJ-Q6-1K9" secondAttribute="trailing" constant="20" id="xZJ-iT-PCl"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="profileAvatar" destination="Y9t-4v-Dmg" id="g7j-sO-7Wb"/>
-                <outlet property="profileBirthday" destination="a41-iG-AgA" id="m4n-zN-alc"/>
-                <outlet property="profileCity" destination="lRJ-Q6-1K9" id="A2N-HC-nG4"/>
-                <outlet property="profileName" destination="t2N-qL-Pq1" id="B3P-2w-PBl"/>
-                <outlet property="profileText" destination="bkz-3L-EpB" id="XVh-nL-dM1"/>
-            </connections>
             <point key="canvasLocation" x="112.5" y="195.9375"/>
         </view>
     </objects>
