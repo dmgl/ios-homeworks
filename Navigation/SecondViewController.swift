@@ -13,6 +13,10 @@ class SecondViewController: UIViewController {
     // передача от первого ко второму
     var customText: String?
     
+    // передача из SecondViewController в ExperimentsViewController
+    // передача от второго к первому - способ 1
+    weak var delegate: ViewControllerDelegate?
+    
 
     @IBOutlet weak var customLabel: UILabel!
     
@@ -58,6 +62,11 @@ class SecondViewController: UIViewController {
         super.viewWillDisappear(true)
         print(#function, "SecondViewController viewWillDisappear")
         print("сейчас исчезнет SecondViewController")
+        
+        // передача из SecondViewController в ExperimentsViewController
+        // передача от второго к первому - способ 1
+        self.delegate?.changeButtonTitleColor()
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {

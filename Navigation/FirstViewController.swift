@@ -7,6 +7,11 @@
 
 import UIKit
 
+// передача из SecondViewController в FirstViewController
+// передача от второго к первому - способ 1 delegate, protocol
+protocol ViewControllerDelegate: AnyObject {
+    func changeButtonTitleColor()
+}
 
 
 class FirstViewController: UIViewController {
@@ -122,6 +127,21 @@ class FirstViewController: UIViewController {
         
         //secondViewController.customLabel.text = "QWERTY" // так не получится
         secondViewController.customText = "Custom text received from first view"
+        
+        // передача из SecondViewController в FirstViewController
+        // передача от второго к первому - способ 1 delegate, protocol
+        secondViewController.delegate = self
+        
+        
     }
 
+}
+
+
+// передача из SecondViewController в FirstViewController
+// передача от второго к первому - способ 1
+extension FirstViewController:ViewControllerDelegate {
+    func changeButtonTitleColor() {
+        self.continueButton.setTitleColor(.red, for: .normal)
+    }
 }
