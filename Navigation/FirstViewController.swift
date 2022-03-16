@@ -21,10 +21,10 @@ class FirstViewController: UIViewController {
         
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.prefersLargeTitles = true // переменная относится ко всем экранам с navigationBar (если где-то переопределить, то везде изменится)
+        //self.navigationController?.navigationBar.prefersLargeTitles = true // переменная относится ко всем экранам с navigationBar (если где-то переопределить, то везде изменится)
         // гайдлайны apple говорят, что размер navigationBar должен быть одинаковым на всех экранах
         
-        self.navigationItem.title = "First"
+        //self.navigationItem.title = "First"
         
         self.navigationItem.backButtonTitle = "Back..." // кастомное название назад
         //self.navigationItem.backButtonTitle = "" // чтобы была просто стрелочка
@@ -76,7 +76,38 @@ class FirstViewController: UIViewController {
     //    let secondViewController = UIViewController()
     //    self.navigationController?.pushViewController(secondViewController, animated: true)
     //}
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        print(#function, "FirstViewController viewWillAppear")
+        print("будет отображен FirstViewController")
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true // костыль, который все используют (если нужны разного размера заголовки navigation)
+        self.navigationItem.title = "First" // костыль, который все используют (если нужны разного размера заголовки navigation)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        print(#function, "FirstViewController viewDidAppear")
+        print("уже отобразился FirstViewController")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        print(#function, "FirstViewController viewWillDisappear")
+        print("сейчас исчезнет FirstViewController")
 
+        self.navigationItem.title = "" // костыль, который все используют (если нужны разного размера заголовки navigation)
+
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        print(#function, "FirstViewController viewDidDisappear")
+        print("сейчас исчезнет FirstViewController")
+    }
+    
 
 
 }

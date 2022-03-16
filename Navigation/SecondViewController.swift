@@ -29,7 +29,35 @@ class SecondViewController: UIViewController {
         
 
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        print(#function, "SecondViewController viewWillAppear")
+        print("будет отображен SecondViewController")
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = false // костыль, который все используют (если нужны разного размера заголовки navigation)
+        self.navigationItem.title = "Second" // костыль, который все используют (если нужны разного размера заголовки navigation)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        print(#function, "SecondViewController viewDidAppear")
+        print("уже отобразился SecondViewController")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        print(#function, "SecondViewController viewWillDisappear")
+        print("сейчас исчезнет SecondViewController")
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        print(#function, "SecondViewController viewDidDisappear")
+        print("сейчас исчезнет SecondViewController")
+    }
+    
 
 }
 
