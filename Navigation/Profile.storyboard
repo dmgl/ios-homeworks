@@ -15,10 +15,25 @@
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jhc-7V-Caw" customClass="ProfileViewXib" customModule="Navigation" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="428" height="848"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="zXr-3b-Zmz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jhc-7V-Caw" firstAttribute="leading" secondItem="zXr-3b-Zmz" secondAttribute="leading" id="4iO-DN-KLK"/>
+                            <constraint firstItem="jhc-7V-Caw" firstAttribute="top" secondItem="zXr-3b-Zmz" secondAttribute="top" id="9FC-1M-8Je"/>
+                            <constraint firstItem="zXr-3b-Zmz" firstAttribute="bottom" secondItem="jhc-7V-Caw" secondAttribute="bottom" id="Gtz-T5-3cu"/>
+                            <constraint firstItem="zXr-3b-Zmz" firstAttribute="trailing" secondItem="jhc-7V-Caw" secondAttribute="trailing" id="tmQ-n9-2ri"/>
+                        </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="CorrectProfileViewXib" destination="jhc-7V-Caw" id="zGG-UH-ezs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

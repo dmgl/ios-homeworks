@@ -9,20 +9,18 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    @IBOutlet weak var CorrectProfileViewXib: ProfileViewXib!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        if let profileViewFromXib = Bundle.main.loadNibNamed("ProfileView", owner: nil, options: nil)?.first
-            as? UIView {
-
-            self.view.addSubview(profileViewFromXib)
-
-            profileViewFromXib.frame = self.view.bounds
-            profileViewFromXib.autoresizingMask = [.flexibleWidth,
-                                                    .flexibleHeight]
+        CorrectProfileViewXib.setupView()
     
-        }
+        CorrectProfileViewXib.prfName.textAlignment = .right
+        CorrectProfileViewXib.prfBirthday.textAlignment = .right
+        CorrectProfileViewXib.prfCity.textAlignment = .right
+        CorrectProfileViewXib.prfText.textAlignment = .justified
         
     }
 }

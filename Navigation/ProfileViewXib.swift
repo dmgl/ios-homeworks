@@ -46,6 +46,13 @@ class ProfileViewXib: UIView {
             return UIView()
         }
     }
+    
+    
+    func setupView() {
+        self.prfName.text = "Léa Seydoux"
+        self.prfBirthday.text = "01-07-1985"
+        self.prfCity.text = "Paris"
+    }
 
 }
 
