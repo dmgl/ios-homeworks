@@ -132,6 +132,15 @@ class FirstViewController: UIViewController {
         // передача от второго к первому - способ 1 delegate, protocol
         secondViewController.delegate = self
         
+        // передача из SecondViewController в FirstViewController
+        // передача от второго к первому - способ 2 closure
+        secondViewController.closure = { [weak self] in
+            self?.continueButton.setTitleColor(.yellow, for: .normal)
+        }
+        //secondViewController.closure = { // опасно, т.к. строгая ссылка
+        //    self.continueButton.setTitleColor(.yellow, for: .normal)
+        //}
+        
         
     }
 
