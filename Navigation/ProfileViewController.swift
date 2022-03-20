@@ -18,7 +18,9 @@ class ProfileViewController: UIViewController {
 
         self.title = "Profile"                  // одно и то же?
         self.navigationItem.title = "Profile"   // одно и то же?
-                
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
     }
     
 }

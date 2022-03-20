@@ -57,15 +57,7 @@ class InfoViewController: UIViewController {
     
     @objc func showedAlert () {
         
-        let alert = AlertViewController(title: "Delete post immediately?", message: "Choose your decision", preferredStyle: .actionSheet)
-        print("Delete post immediately?")
-        
-        let deleteConfirmation = UIAlertAction(title: "Yes, delete", style: .destructive) { _ in print("Yes, was deleted") }
-        let deleteAbort = UIAlertAction(title: "No", style: .cancel) { (_) in print("No, abort delete") }
-        
-        alert.addAction(deleteConfirmation)
-        alert.addAction(deleteAbort)
-        
+        let alert = AlertViewController()
         self.present(alert, animated: true, completion: hideBackgroundButton)
         
     }

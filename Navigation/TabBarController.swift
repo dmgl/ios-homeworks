@@ -68,6 +68,7 @@ class TabBarController: UITabBarController {
         
         
         self.viewControllers?.forEach( {
+            print("rootViewController:")
             print($0.tabBarItem.title ?? "No title", $0.tabBarItem.tag)
         } )
         
