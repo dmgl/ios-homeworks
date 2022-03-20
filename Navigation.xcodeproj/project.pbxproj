@@ -12,7 +12,7 @@
 		1FBAC0C727E54E5E003151C7 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBAC0C627E54E5E003151C7 /* TabBarController.swift */; };
 		1FBAC0C927E54EF1003151C7 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBAC0C827E54EF1003151C7 /* PostViewController.swift */; };
 		1FBAC0CB27E55305003151C7 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBAC0CA27E55305003151C7 /* InfoViewController.swift */; };
-		1FBAC0CD27E6AB70003151C7 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBAC0CC27E6AB70003151C7 /* AlertViewController.swift */; };
+		1FBAC0D127E6C148003151C7 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBAC0D027E6C148003151C7 /* AlertViewController.swift */; };
 		1FC7FC8527B477250011B752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC7FC8427B477250011B752 /* AppDelegate.swift */; };
 		1FC7FC8727B477250011B752 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC7FC8627B477250011B752 /* SceneDelegate.swift */; };
 		1FC7FC8E27B477290011B752 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FC7FC8D27B477290011B752 /* Assets.xcassets */; };
@@ -24,7 +24,7 @@
 		1FBAC0C627E54E5E003151C7 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		1FBAC0C827E54EF1003151C7 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		1FBAC0CA27E55305003151C7 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
-		1FBAC0CC27E6AB70003151C7 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = SOURCE_ROOT; };
+		1FBAC0D027E6C148003151C7 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		1FC7FC8127B477250011B752 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FC7FC8427B477250011B752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FC7FC8627B477250011B752 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 				1FBAC0C227E54CE9003151C7 /* FeedViewController.swift */,
 				1FBAC0C827E54EF1003151C7 /* PostViewController.swift */,
 				1FBAC0CA27E55305003151C7 /* InfoViewController.swift */,
-				1FBAC0CC27E6AB70003151C7 /* AlertViewController.swift */,
+				1FBAC0D027E6C148003151C7 /* AlertViewController.swift */,
 				1FBAC0C427E54D13003151C7 /* ProfileViewController.swift */,
 			);
 			path = Navigation;
@@ -148,7 +148,7 @@
 				1FBAC0C927E54EF1003151C7 /* PostViewController.swift in Sources */,
 				1FC7FC8527B477250011B752 /* AppDelegate.swift in Sources */,
 				1FBAC0C327E54CE9003151C7 /* FeedViewController.swift in Sources */,
-				1FBAC0CD27E6AB70003151C7 /* AlertViewController.swift in Sources */,
+				1FBAC0D127E6C148003151C7 /* AlertViewController.swift in Sources */,
 				1FBAC0CB27E55305003151C7 /* InfoViewController.swift in Sources */,
 				1FBAC0C527E54D13003151C7 /* ProfileViewController.swift in Sources */,
 				1FBAC0C727E54E5E003151C7 /* TabBarController.swift in Sources */,
