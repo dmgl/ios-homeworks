@@ -57,8 +57,8 @@ class TabBarController: UITabBarController {
         let feed = UINavigationController(rootViewController: FeedViewController)
         let profile = UINavigationController(rootViewController: ProfileViewController)
         
-        self.viewControllers = [feed,profile]                   // не смог уловить разницу
-        self.setViewControllers([feed,profile], animated: true) // не смог уловить разницу
+        self.viewControllers = [feed,profile]                  
+        self.setViewControllers([feed,profile], animated: true)
         
         //        self.viewControllers = [UINavigationController(rootViewController:FeedViewController),
         //                                UINavigationController(rootViewController: ProfileViewController)]

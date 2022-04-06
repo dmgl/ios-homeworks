@@ -68,18 +68,9 @@ class InfoViewController: UIViewController {
             button.isHidden = false
         }
         
-        self.present(alert, animated: true, completion: completionAfterPresent)
-        
-        // self.present(alert, animated: false, completion: alert.completionHideButton)
-        // можно красную кнопку на фоне и так убрать, но тогда без анимации, а то
-        // она не сразу исчезнет и будет так себе эффект см. viewWillAppear
-        // у AlertViewController
+        self.present(alert, animated: true, completion: nil)
 
-    }
-    
-    
-    let completionAfterPresent = {
-        print("[This is completion after present]")
+
     }
     
     

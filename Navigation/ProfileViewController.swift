@@ -16,8 +16,7 @@ class ProfileViewController: UIViewController {
         
         self.view.backgroundColor = .yellow
 
-        self.title = "Profile"                  // одно и то же?
-        self.navigationItem.title = "Profile"   // одно и то же?
+        self.navigationItem.title = "Profile"
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
         

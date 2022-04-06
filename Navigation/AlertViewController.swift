@@ -14,7 +14,7 @@ class AlertViewController: UIAlertController {
     var completionShowButton: (()->())?
     
     // Важно понять: тут просто объявляем closure, и вызываем,
-    // а определяем функционад там, где у нас есть
+    // а определяем функционал там, где у нас есть
     // доступ к нужному см. InfoViewController
     
     
@@ -44,8 +44,8 @@ class AlertViewController: UIAlertController {
     }
 
     
-    override func viewWillAppear(_ animated: Bool) {        // можно было бы у InfoViewController там 
-        self.completionHideButton?()                        // где present указать на completion
+    override func viewWillAppear(_ animated: Bool) {
+        self.completionHideButton?()
     }
     
     
