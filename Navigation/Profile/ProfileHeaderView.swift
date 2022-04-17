@@ -28,9 +28,7 @@ class ProfileHeaderView: UIView {
         super.init(frame: frame)
         
         self.backgroundColor = .lightGray
-        
-        self.translatesAutoresizingMaskIntoConstraints = false
-                
+                        
         setupViews()
         
         [avatar,

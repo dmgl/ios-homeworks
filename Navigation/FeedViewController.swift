@@ -10,6 +10,23 @@ import UIKit
 class FeedViewController: UIViewController {
 
 
+    private lazy var button1 = setupPostButton()
+    private lazy var button2 = setupPostButton()
+    
+    private lazy var buttonsStack: UIStackView = {
+        
+        let view = UIStackView()
+        
+        view.spacing = 10
+        view.axis = .vertical
+        view.distribution = .equalCentering
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,9 +35,12 @@ class FeedViewController: UIViewController {
 
         self.navigationItem.title = "Feed"
 
-        let button = setupPostButton()
-        self.view.addSubview(button)
-        placePostButton(button: button)
+
+        buttonsStack.addArrangedSubview(button1)
+        buttonsStack.addArrangedSubview(button2)
+        
+        self.view.addSubview(buttonsStack)
+        placeButtonsStack(buttonsStack)
 
     }
 
@@ -32,7 +52,9 @@ class FeedViewController: UIViewController {
         button.setTitle("See post", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .blue
-        button.layer.cornerRadius = 10
+        button.layer.cornerRadius = 16
+        
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
 
         button.addTarget(self, action: #selector(showedPost), for: .touchUpInside)
 
@@ -41,19 +63,20 @@ class FeedViewController: UIViewController {
     }
 
 
-    private func placePostButton(button: UIButton) {
+    private func placeButtonsStack(_ stack: UIStackView) {
 
-        button.translatesAutoresizingMaskIntoConstraints = false
-
-        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
-        button.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
-        //button.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 0).isActive = true
-        button.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        
+        //stack.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
+        //stack.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
+        stack.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        stack.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        stack.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+        stack.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
 
     }
-
-
+    
+    
     @objc func showedPost() {
 
         let postViewController = PostViewController()
