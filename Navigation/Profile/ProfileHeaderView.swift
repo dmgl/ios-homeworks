@@ -31,11 +31,16 @@ class ProfileHeaderView: UIView {
                         
         setupViews()
         
-        [avatar,
-         name,
-         status,
+        [infoStackView,
          statusTextField,
          setStatusButton].forEach { self.addSubview($0) }
+        
+        self.infoStackView.addArrangedSubview(self.avatar)
+        self.infoStackView.addArrangedSubview(self.labelsStackView)
+        self.labelsStackView.addArrangedSubview(self.name)
+        self.labelsStackView.addArrangedSubview(self.status)
+        self.labelsStackView.addArrangedSubview(self.statusTextField)
+
         
         setupConstraints()
         
@@ -48,6 +53,21 @@ class ProfileHeaderView: UIView {
     
     
     private func setupViews() {
+        
+        
+        /// __info stack__
+        ///
+        infoStackView.axis = .horizontal
+        infoStackView.spacing = 16
+        
+        infoStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        /// __labels stack__
+        
+        labelsStackView.axis = .vertical
+        labelsStackView.distribution = .fillEqually
+        labelsStackView.spacing = 10
+        labelsStackView.translatesAutoresizingMaskIntoConstraints = false
         
         /// __avatar__
         
@@ -108,7 +128,7 @@ class ProfileHeaderView: UIView {
         
         /// __showStatusButton__
         
-        setStatusButton.setTitle("Set status", for: .normal)
+        setStatusButton.setTitle("Show status", for: .normal)
         setStatusButton.setTitleColor(.white, for: .normal)
         
         setStatusButton.backgroundColor = .blue
@@ -135,38 +155,17 @@ class ProfileHeaderView: UIView {
         NSLayoutConstraint.activate(
             
             [
-                /// __avatar__
+                
+                infoStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
+                infoStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+                infoStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+                
+                avatar.heightAnchor.constraint(equalTo: self.avatar.widthAnchor, multiplier: 1.0),
 
-                avatar.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
-                avatar.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-                avatar.widthAnchor.constraint(equalToConstant: 120),
-                avatar.heightAnchor.constraint(equalToConstant: 120),
-
-                /// __name__
-
-                name.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 27),
-                name.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 16),
-                name.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-
-                /// __status__
-
-                status.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 34),
-                status.leadingAnchor.constraint(equalTo: name.leadingAnchor),
-                status.trailingAnchor.constraint(equalTo: name.trailingAnchor),
-                status.heightAnchor.constraint(equalToConstant: 16),
-
-                /// __statusTextField__
-
-                statusTextField.topAnchor.constraint(equalTo: status.bottomAnchor, constant: 12),
-                statusTextField.leadingAnchor.constraint(equalTo: name.leadingAnchor),
-                statusTextField.trailingAnchor.constraint(equalTo: name.trailingAnchor),
-                statusTextField.heightAnchor.constraint(equalToConstant: 40),
-
-                /// __showStatusButton__
-
-                setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 16),
-                setStatusButton.leadingAnchor.constraint(equalTo: avatar.leadingAnchor),
-                setStatusButton.trailingAnchor.constraint(equalTo: name.trailingAnchor),
+                setStatusButton.topAnchor.constraint(equalTo: self.infoStackView.bottomAnchor, constant: 16),
+                setStatusButton.leadingAnchor.constraint(equalTo: self.infoStackView.leadingAnchor),
+                setStatusButton.trailingAnchor.constraint(equalTo: self.infoStackView.trailingAnchor),
+                setStatusButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16),
                 setStatusButton.heightAnchor.constraint(equalToConstant: 50)
                 
             ]
