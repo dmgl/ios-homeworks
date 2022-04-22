@@ -16,7 +16,8 @@ class FeedViewController: UIViewController {
         
         self.view.backgroundColor = .white
         
-        self.navigationItem.title = "Feed"
+        self.title = "Feed"                 // одно и то же?
+        self.navigationItem.title = "Feed"  // одно и то же?
         
         let button = setupPostButton()
         self.view.addSubview(button)

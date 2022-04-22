@@ -57,20 +57,14 @@ class InfoViewController: UIViewController {
     
     @objc func showedAlert () {
         
-        let alert = AlertViewController()
+        let alert = AlertController()
+        self.present(alert, animated: true, completion: hideBackgroundButton)
         
-        alert.completionHideButton = {
-            let button = self.view.subviews[0]
-            button.isHidden = true
-        }
-        alert.completionShowButton = {
-            let button = self.view.subviews[0]
-            button.isHidden = false
-        }
-        
-        self.present(alert, animated: true, completion: nil)
-
-
+    }
+    
+    
+    let hideBackgroundButton = {
+        print("[Don't know how to hide this red delete button on background here! =(]")
     }
     
     
