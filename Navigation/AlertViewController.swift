@@ -8,26 +8,26 @@
 import UIKit
 
 class AlertViewController: UIAlertController {
-
-
+    
+    
     var completionHideButton: (()->())?
     var completionShowButton: (()->())?
-
+    
     // Важно понять: тут просто объявляем closure, и вызываем,
     // а определяем функционал там, где у нас есть
     // доступ к нужному см. InfoViewController
-
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
 
         self.title = "Delete post immediately?"
         self.message = "Choose your decision"
-
-
+        
+        
         print("Delete post immediately?")
-
+        
 
         let deleteConfirmation = UIAlertAction(title: "Yes, delete", style: .destructive) {
             action in
@@ -38,20 +38,20 @@ class AlertViewController: UIAlertController {
             (_) in
             print("No, abort delete")
         }
-
+        
         self.addAction(deleteConfirmation)
         self.addAction(deleteAbort)
     }
 
-
+    
     override func viewWillAppear(_ animated: Bool) {
         self.completionHideButton?()
     }
-
-
+    
+    
     override func viewWillDisappear(_ animated: Bool) {
         self.completionShowButton?()
     }
-
-
+    
+    
 }
