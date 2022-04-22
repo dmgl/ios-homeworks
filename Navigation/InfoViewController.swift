@@ -31,7 +31,7 @@ class InfoViewController: UIViewController {
         button.setTitle("Delete post", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .red
-        button.layer.cornerRadius = 10
+        button.layer.cornerRadius = 16
 
         button.addTarget(self, action: #selector(showedAlert), for: .touchUpInside)
 
@@ -46,11 +46,11 @@ class InfoViewController: UIViewController {
 
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
 
-        button.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
-        button.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+        button.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+        button.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
 
         //button.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 0).isActive = true
-        button.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
+        button.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
 
     }
 
