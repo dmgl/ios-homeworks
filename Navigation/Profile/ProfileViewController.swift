@@ -49,12 +49,13 @@ class ProfileViewController: UIViewController {
                 
         self.view.addSubview(self.profileHeaderView)
         self.view.addSubview(self.newButton)
-        setupViews()
         
+        setupConstraints()
+
     }
     
     
-    func setupViews() {
+    func setupConstraints() {
     
         let topConstraintProfileHeaderView = self.profileHeaderView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor)
         let heightConstraintProfileHeaderView = self.profileHeaderView.heightAnchor.constraint(equalToConstant: 220)
@@ -85,5 +86,20 @@ class ProfileViewController: UIViewController {
         self.newButton.setTitle(stateButton, for: .normal)
         
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+
+        self.navigationController?.navigationBar.isHidden = false
+
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+
+        self.navigationController?.navigationBar.isHidden = true
+
+    }
+    
     
 }

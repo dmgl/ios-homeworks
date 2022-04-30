@@ -40,7 +40,6 @@ class ProfileHeaderView: UIView {
         self.labelsStackView.addArrangedSubview(self.name)
         self.labelsStackView.addArrangedSubview(self.status)
         self.labelsStackView.addArrangedSubview(self.statusTextField)
-
         
         setupConstraints()
         

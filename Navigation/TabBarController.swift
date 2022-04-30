@@ -49,7 +49,8 @@ class TabBarController: UITabBarController {
     private func setupTabBarByMe() {
         
         let FeedViewController = FeedViewController()
-        let ProfileViewController = ProfileViewController()
+        let ProfileViewController = LogInViewController()
+        //let ProfileViewController = ProfileViewController()
         
         FeedViewController.tabBarItem = UITabBarItem(title: TabBarItem.feed.title, image: TabBarItem.feed.image, selectedImage: TabBarItem.feed.image)
         ProfileViewController.tabBarItem = UITabBarItem(title: TabBarItem.profile.title, image: TabBarItem.profile.image, selectedImage: TabBarItem.profile.image)
@@ -84,7 +85,8 @@ class TabBarController: UITabBarController {
     //            case .feed:
     //                return UINavigationController(rootViewController: FeedViewController())
     //            case .profile:
-    //                return UINavigationController(rootViewController: ProfileViewController())
+    //                return UINavigationController(rootViewController: LoginViewController())
+    //                //return UINavigationController(rootViewController: ProfileViewController())
     //            }
     //        } )
     //
