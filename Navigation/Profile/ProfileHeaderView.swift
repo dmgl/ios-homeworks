@@ -27,7 +27,7 @@ class ProfileHeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .lightGray
+        self.backgroundColor = .systemGray5
                         
         setupViews()
         
@@ -53,6 +53,9 @@ class ProfileHeaderView: UIView {
     
     private func setupViews() {
         
+        /// __view__
+        
+        self.translatesAutoresizingMaskIntoConstraints = false // 182
         
         /// __info stack__
         ///
@@ -154,10 +157,14 @@ class ProfileHeaderView: UIView {
         NSLayoutConstraint.activate(
             
             [
+                self.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+                self.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+                self.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+                self.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
                 
-                infoStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
-                infoStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-                infoStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+                infoStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
+                infoStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+                infoStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
                 
                 avatar.heightAnchor.constraint(equalTo: self.avatar.widthAnchor, multiplier: 1.0),
 

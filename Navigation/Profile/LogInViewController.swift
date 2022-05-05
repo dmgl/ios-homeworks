@@ -156,9 +156,9 @@ class LogInViewController: UIViewController {
                 /// __scrollView__
                 
                 self.scrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-                self.scrollView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-                self.scrollView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-                self.scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+                self.scrollView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
+                self.scrollView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor),
+                self.scrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
                 
                 
                 /// __contentView__
@@ -167,14 +167,14 @@ class LogInViewController: UIViewController {
                 self.contentView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
                 self.contentView.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
                 self.contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-                //self.contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+                self.contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
                 self.contentView.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor),
                 self.contentView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor),
                 
                 
                 /// __logoView__
                 
-                self.logoView.topAnchor.constraint(equalTo: self.scrollView.topAnchor, constant: 120),
+                self.logoView.topAnchor.constraint(lessThanOrEqualTo: self.scrollView.topAnchor, constant: 120),
                 self.logoView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor),
                 self.logoView.heightAnchor.constraint(equalToConstant: 100),
                 self.logoView.widthAnchor.constraint(equalToConstant: 100),
@@ -203,6 +203,8 @@ class LogInViewController: UIViewController {
                 self.loginButton.trailingAnchor.constraint(equalTo: self.loginPasswordTextField.trailingAnchor),
                 self.loginButton.heightAnchor.constraint(equalToConstant: 50),
                 
+                // for correct work of full scrolling down need to set bottom anchor for latest element
+                self.loginButton.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor),
             ]
         
         )
@@ -223,7 +225,8 @@ class LogInViewController: UIViewController {
         
         nc.addObserver(self, selector: #selector(kbdShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         nc.addObserver(self, selector: #selector(kbdHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    
+        //nc.addObserver(self, selector: #selector(rotated), name: UIDevice.orientationDidChangeNotification, object: nil)
+        
     }
     
     
@@ -233,6 +236,7 @@ class LogInViewController: UIViewController {
         
         nc.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         nc.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        //nc.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
     
     }
     
@@ -245,10 +249,11 @@ class LogInViewController: UIViewController {
             let keyboardRectangle = keyboardSize.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             
-//             self.scrollView.contentOffset.y = self.loginButton.frame.height + 16
-//             self.scrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+//            scrollView.contentInset.bottom = keyboardHeight                                                               // by tutor
+//            scrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)    // by tutor
             
-            // googled hack: variant for big screens (frameHeightWithoutKeyboard will be huge)
+            
+            // googled hack: variant for big screens (frameHeightWithoutKeyboard will be huge)                              // var 2
             let fromEdgeToButtonBottomPosition = self.loginButton.frame.origin.y + 50 + 16*2
             let frameHeightWithoutKeyboard = self.view.frame.height - keyboardHeight
             
@@ -259,15 +264,18 @@ class LogInViewController: UIViewController {
             self.scrollView.contentOffset = CGPoint(x: 0, y: offset)
             
         }
-    
+        
     }
     
     
     @objc private func kbdHide() {
         
+        //scrollView.contentInset = .zero                                                                                   // by tutor
+        //scrollView.verticalScrollIndicatorInsets = .zero                                                                  // by tutor
+        
         self.scrollView.contentOffset = .zero
         self.scrollView.verticalScrollIndicatorInsets = .zero
-    
+        
     }
     
     
@@ -281,10 +289,22 @@ class LogInViewController: UIViewController {
     
     
     @objc private func dismissKeyboard() {                                                                                                  // https://stackoverflow.com/a/27079103/3123886
-
+        
         self.view.endEditing(true)
-
+        
     }
+    
+    
+//    @objc private func rotated() {
+//    
+//        if UIDevice.current.orientation.isLandscape {
+//            logoView.isHidden = true
+//        } else {
+//            logoView.isHidden = false
+//        }
+//
+//
+//}
     
     
 }
