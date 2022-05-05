@@ -27,72 +27,48 @@ var posts: [PostModel] = [postA, postB, postC, postD]
 class ProfileViewController: UIViewController {
     
     
-    private lazy var tableView: UITableView = UITableView(frame: .zero, style: .grouped)
-    private lazy var profileHeaderView: UIView = ProfileHeaderView()
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.backgroundColor = .systemGray5
+        tableView.separatorInset = .init(top: 0, left: 10, bottom: 0, right: 10)                                                           // or = .zero
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 44
+        tableView.dataSource = self                                                                                                        // attention
+        tableView.delegate = self                                                                                                          // attention
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostCell")
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+    private lazy var profileHeaderView: UIView = {
+        let profileHeaderView = ProfileHeaderView()
+        profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
+        return profileHeaderView
+    }()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         self.view.backgroundColor = .yellow
-        
         self.navigationItem.title = "Profile"
-                
-        setupViews()
-        
+        //self.setupViews()                                                                                                                // new-style code structure, so function not needed
         self.view.addSubview(tableView)
-        // tableView.tableHeaderView = profileHeaderView                                      //which does not scroll, but hangs
-        
-        setupConstraints()
-        
-//        tableView.setNeedsLayout()
-//        tableView.layoutIfNeeded()
-        
-        
+        self.setupConstraints()
     }
     
     
-    private func setupViews() {
+    //private func setupViews() {                                                                                                          // new-style code structure, so function not needed
+    //}                                                                                                                                    // new-style code structure, so function not needed
     
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        //tableHeaderView.translatesAutoresizingMaskIntoConstraints = false                   //which does not scroll, but hangs
-        
-        tableView.backgroundColor = .systemGray5
-        
-        //tableView.separatorInset = .zero
-        tableView.separatorInset = .init(top: 0, left: 10, bottom: 0, right: 10)
-        
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 44
-        
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
-        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostCell")
-        
-    }
     
     private func setupConstraints() {
-    
-        NSLayoutConstraint.activate(
-            
-            [
-                
-//            self.view.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-//            self.view.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
-//            self.view.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
-//            self.view.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
-            
+        NSLayoutConstraint.activate([
             self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
             self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            
-            ]
-        )
-        
+            ])
     }
 }
   
@@ -106,26 +82,15 @@ extension ProfileViewController: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostTableViewCell
-        
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as? PostTableViewCell else {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
-//            return cell
-//        }
-        
         let post = posts[indexPath.row]
-        
         cell.setup(author: post.author,
                    image: post.image,
                    description: post.description,
                    likes: post.likes,
                    views: post.views)
-        
         cell.clipsToBounds = true
-        
         return cell
-        
     }
     
     
@@ -136,39 +101,26 @@ extension ProfileViewController: UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        //return profileHeaderView // 182
-        
         let headerInSection = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
-        
         headerInSection.addSubview(profileHeaderView)
-        
-        NSLayoutConstraint.activate(
-            [
-                self.profileHeaderView.topAnchor.constraint(equalTo: headerInSection.topAnchor),
-                self.profileHeaderView.leadingAnchor.constraint(equalTo: headerInSection.leadingAnchor),
-                self.profileHeaderView.trailingAnchor.constraint(equalTo: headerInSection.trailingAnchor),
-                self.profileHeaderView.heightAnchor.constraint(equalToConstant: 220)
-            ]
-        )
-       
+        NSLayoutConstraint.activate([
+            self.profileHeaderView.topAnchor.constraint(equalTo: headerInSection.topAnchor),
+            self.profileHeaderView.leadingAnchor.constraint(equalTo: headerInSection.leadingAnchor),
+            self.profileHeaderView.trailingAnchor.constraint(equalTo: headerInSection.trailingAnchor),
+            self.profileHeaderView.heightAnchor.constraint(equalToConstant: 220)
+            ])
         return headerInSection
-        
     }
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
         return 220
-    
     }
     
-    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        
-        return false
     
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return false
     }
     
     
 }
-
