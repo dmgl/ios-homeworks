@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F3F3BC42826D746009896EC /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3F3BC32826D745009896EC /* PhotosTableViewCell.swift */; };
+		1F3F3BC62826DEFC009896EC /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3F3BC52826DEFC009896EC /* PhotosViewController.swift */; };
+		1F3F3BC82826E171009896EC /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3F3BC72826E171009896EC /* PhotosCollectionViewCell.swift */; };
 		1FBAC0D927E6D073003151C7 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBAC0D827E6D073003151C7 /* TabBarController.swift */; };
 		1FBAC0DB27E6D0B0003151C7 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBAC0DA27E6D0B0003151C7 /* FeedViewController.swift */; };
 		1FBAC0DD27E6D0F5003151C7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBAC0DC27E6D0F5003151C7 /* ProfileViewController.swift */; };
@@ -22,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F3F3BC32826D745009896EC /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
+		1F3F3BC52826DEFC009896EC /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		1F3F3BC72826E171009896EC /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		1FBAC0D827E6D073003151C7 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		1FBAC0DA27E6D0B0003151C7 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		1FBAC0DC27E6D0F5003151C7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +62,9 @@
 				1FBAC0DC27E6D0F5003151C7 /* ProfileViewController.swift */,
 				1FC55CCE281AEE35004D2FC9 /* LogInViewController.swift */,
 				1FC55CD22821BFBF004D2FC9 /* PostTableViewCell.swift */,
+				1F3F3BC32826D745009896EC /* PhotosTableViewCell.swift */,
+				1F3F3BC52826DEFC009896EC /* PhotosViewController.swift */,
+				1F3F3BC72826E171009896EC /* PhotosCollectionViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -162,6 +171,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F3F3BC42826D746009896EC /* PhotosTableViewCell.swift in Sources */,
+				1F3F3BC82826E171009896EC /* PhotosCollectionViewCell.swift in Sources */,
+				1F3F3BC62826DEFC009896EC /* PhotosViewController.swift in Sources */,
 				1FC55CD32821BFBF004D2FC9 /* PostTableViewCell.swift in Sources */,
 				1FBAC0DF27E6D125003151C7 /* PostViewController.swift in Sources */,
 				1FBAC0D927E6D073003151C7 /* TabBarController.swift in Sources */,

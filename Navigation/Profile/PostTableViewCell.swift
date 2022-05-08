@@ -28,8 +28,8 @@ class PostTableViewCell: UITableViewCell {
     private lazy var postDescriptionLabel: UILabel = {
         let postDescriptionLabel = UILabel()
         postDescriptionLabel.font = .systemFont(ofSize: 14)
-        postAuthorLabel.textColor = .systemGray
-        postAuthorLabel.numberOfLines = 0
+        postDescriptionLabel.textColor = .systemGray
+        postDescriptionLabel.numberOfLines = 0
         postDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         return postDescriptionLabel
     }()
