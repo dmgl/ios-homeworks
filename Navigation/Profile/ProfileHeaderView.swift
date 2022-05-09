@@ -54,6 +54,7 @@ class ProfileHeaderView: UIView {
         statusTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: statusTextField.frame.height))                      // https://stackoverflow.com/a/33207638/3123886
         statusTextField.leftViewMode = .always                                                                                             // https://stackoverflow.com/a/33207638/3123886
         statusTextField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)                                        // action
+        statusTextField.delegate = self                                                                                                    // attention
         statusTextField.translatesAutoresizingMaskIntoConstraints = false
         return statusTextField
     }()
@@ -99,6 +100,7 @@ class ProfileHeaderView: UIView {
         [self.avatar, self.labelsStackView].forEach( {self.infoStackView.addArrangedSubview($0)} )
         [self.name, self.status, self.statusTextField].forEach( {self.labelsStackView.addArrangedSubview($0)} )
         setupConstraints()
+        hideKeyboardWhenTappedAround()
     }
     
     
@@ -141,4 +143,23 @@ class ProfileHeaderView: UIView {
     }
     
     
+    private func hideKeyboardWhenTappedAround() {                                                                                          // https://stackoverflow.com/a/27079103/3123886
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        self.addGestureRecognizer(tap)
+    }
+
+
+    @objc private func dismissKeyboard() {                                                                                                 // https://stackoverflow.com/a/27079103/3123886
+        self.endEditing(true)
+    }
+    
+}
+
+
+extension ProfileHeaderView: UITextFieldDelegate {                                                                                       // attention
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.endEditing(true)
+        return true
+    }
 }

@@ -38,7 +38,7 @@ class LogInViewController: UIViewController {
         loginEmailOrTelTextField.textColor = .black
         loginEmailOrTelTextField.font = UIFont.systemFont(ofSize: 16)
         loginEmailOrTelTextField.autocapitalizationType = .none
-        loginEmailOrTelTextField.backgroundColor = .systemGray6
+        loginEmailOrTelTextField.backgroundColor = .systemGray5
         loginEmailOrTelTextField.layer.borderColor = UIColor.lightGray.cgColor
         loginEmailOrTelTextField.layer.borderWidth = 0.5
         loginEmailOrTelTextField.layer.cornerRadius = 10
@@ -56,7 +56,7 @@ class LogInViewController: UIViewController {
         loginEmailOrTelTextField.textColor = .black
         loginPasswordTextField.font = UIFont.systemFont(ofSize: 16)
         loginPasswordTextField.autocapitalizationType = .none
-        loginPasswordTextField.backgroundColor = .systemGray6
+        loginPasswordTextField.backgroundColor = .systemGray5
         loginPasswordTextField.layer.borderColor = UIColor.lightGray.cgColor
         loginPasswordTextField.layer.borderWidth = 0.5
         loginPasswordTextField.layer.cornerRadius = 10
@@ -94,7 +94,7 @@ class LogInViewController: UIViewController {
         self.view.backgroundColor = .white
         //self.setupViews()                                                                                                                // new-style code structure, so function not needed
         self.view.addSubview(self.scrollView)
-        self.scrollView.addSubview(contentView)
+        self.scrollView.addSubview(self.contentView)
         self.contentView.addSubview(self.logoView)
         self.contentView.addSubview(self.loginEmailOrTelTextField)
         self.contentView.addSubview(self.loginPasswordTextField)
@@ -182,7 +182,7 @@ class LogInViewController: UIViewController {
     }
     
     
-    func hideKeyboardWhenTappedAround() {                                                                                                  // https://stackoverflow.com/a/27079103/3123886
+    private func hideKeyboardWhenTappedAround() {                                                                                                  // https://stackoverflow.com/a/27079103/3123886
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
