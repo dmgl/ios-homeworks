@@ -48,25 +48,14 @@ class TabBarController: UITabBarController {
     
     private func setupTabBarByMe() {
         
-        let FeedViewController = FeedViewController()
-        let ProfileViewController = LogInViewController()
-        //let ProfileViewController = ProfileViewController()
+        let feed = UINavigationController(rootViewController: FeedViewController())
+        let profile = UINavigationController(rootViewController: LogInViewController())
         
-        FeedViewController.tabBarItem = UITabBarItem(title: TabBarItem.feed.title, image: TabBarItem.feed.image, selectedImage: TabBarItem.feed.image)
-        ProfileViewController.tabBarItem = UITabBarItem(title: TabBarItem.profile.title, image: TabBarItem.profile.image, selectedImage: TabBarItem.profile.image)
+        feed.tabBarItem = UITabBarItem(title: TabBarItem.feed.title, image: TabBarItem.feed.image, selectedImage: TabBarItem.feed.image)
+        profile.tabBarItem = UITabBarItem(title: TabBarItem.profile.title, image: TabBarItem.profile.image, selectedImage: TabBarItem.profile.image)
         
-        let feed = UINavigationController(rootViewController: FeedViewController)
-        let profile = UINavigationController(rootViewController: ProfileViewController)
-        
-        self.viewControllers = [feed,profile]                  
-        self.setViewControllers([feed,profile], animated: true)
-        
-        //        self.viewControllers = [UINavigationController(rootViewController:FeedViewController),
-        //                                UINavigationController(rootViewController: ProfileViewController)]
-        //        self.setViewControllers([UINavigationController(rootViewController:FeedViewController),
-        //                                 UINavigationController(rootViewController: ProfileViewController)],
-        //                                animated: true)
-        
+        self.viewControllers = [feed, profile]
+        self.setViewControllers([feed, profile], animated: true)
         
         self.viewControllers?.forEach( {
             print("rootViewController:")

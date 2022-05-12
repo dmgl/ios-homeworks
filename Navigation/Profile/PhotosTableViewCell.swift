@@ -27,6 +27,7 @@ class PhotosTableViewCell: UITableViewCell {
     }()
     private lazy var photosStack: UIStackView = {
         let stack = UIStackView()
+        stack.clipsToBounds = true
         stack.axis = .horizontal
         stack.distribution = .fillEqually
         stack.spacing = 8
@@ -98,24 +99,24 @@ class PhotosTableViewCell: UITableViewCell {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             
-            self.contentView.heightAnchor.constraint(equalToConstant: ( (UIScreen.main.bounds.width - 48)/4) + 4 * 12 ),
-            
             self.photosLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 12),
-            self.photosLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 12),
-            self.photosLabel.heightAnchor.constraint(equalToConstant: 12*2),
+            self.photosLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 12),
 
-            self.photosButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -12),
+            self.photosButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -12),
             self.photosButton.centerYAnchor.constraint(equalTo: self.photosLabel.centerYAnchor),
             
             self.photosStack.topAnchor.constraint(equalTo: self.photosLabel.bottomAnchor, constant: 12),
-            self.photosStack.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 12),
-            self.photosStack.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -12),
+            self.photosStack.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 12),
+            self.photosStack.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -12),
             self.photosStack.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -12),
+            //self.photosStack.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width)),
+            self.photosStack.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width)/4)
             
             ])
     }
     
     @objc private func viewPhotoGallery(_ textField: UITextField) {
+        //TODO
         let photoGallery = PhotosViewController()
         self.parentViewController?.navigationController?.pushViewController(photoGallery, animated: true)    // https://stackoverflow.com/a/51471763/3123886
     }

@@ -12,8 +12,9 @@ class ProfileHeaderView: UIView {
     
     private lazy var statusText: String = ""
     
-    private lazy var avatar: UIImageView = {
+    lazy var avatar: UIImageView = {
         let avatar = UIImageView()
+        avatar.isUserInteractionEnabled = true
         avatar.image = UIImage(named: "Image")
         avatar.clipsToBounds = true
         avatar.layer.borderWidth = 3
@@ -95,7 +96,7 @@ class ProfileHeaderView: UIView {
         super.init(frame: frame)
         
         self.backgroundColor = .systemGray5
-        //self.setupViews()                                                                                                                // new-style code structure, so function not needed
+        self.translatesAutoresizingMaskIntoConstraints = false
         [self.infoStackView, self.statusTextField, self.setStatusButton].forEach( {self.addSubview($0)} )
         [self.avatar, self.labelsStackView].forEach( {self.infoStackView.addArrangedSubview($0)} )
         [self.name, self.status, self.statusTextField].forEach( {self.labelsStackView.addArrangedSubview($0)} )
@@ -107,28 +108,31 @@ class ProfileHeaderView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
-    
-    //private func setupViews() {                                                                                                          // new-style code structure, so function not needed
-    //}                                                                                                                                    // new-style code structure, so function not needed
-    
+        
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            self.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            self.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            self.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            self.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            
+//            self.topAnchor.constraint(equalTo: self.topAnchor),
+//            self.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+//            self.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+//            self.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            
             self.infoStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
             self.infoStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             self.infoStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            
+            self.avatar.topAnchor.constraint(equalTo: self.infoStackView.topAnchor),
+            self.avatar.leadingAnchor.constraint(equalTo: self.infoStackView.leadingAnchor),
             self.avatar.heightAnchor.constraint(equalTo: self.avatar.widthAnchor, multiplier: 1.0),
+            
             self.setStatusButton.topAnchor.constraint(equalTo: self.infoStackView.bottomAnchor, constant: 16),
             self.setStatusButton.leadingAnchor.constraint(equalTo: self.infoStackView.leadingAnchor),
             self.setStatusButton.trailingAnchor.constraint(equalTo: self.infoStackView.trailingAnchor),
             self.setStatusButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16),
             self.setStatusButton.heightAnchor.constraint(equalToConstant: 50),
-            ])
+            
+        ])
     }
     
     
