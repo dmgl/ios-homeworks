@@ -9,7 +9,6 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
     
-    
     private lazy var postAuthorLabel: UILabel = {
         let postAuthorLabel = UILabel()
         postAuthorLabel.font = .boldSystemFont(ofSize: 20)
@@ -47,12 +46,11 @@ class PostTableViewCell: UITableViewCell {
         postCountViewsLabel.translatesAutoresizingMaskIntoConstraints = false
         return postCountViewsLabel
     }()
-        
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        //self.setupViews()                                                                                                                // new-style code structure, so function not needed
         self.contentView.addSubview(postAuthorLabel)
         self.contentView.addSubview(postImageView)
         self.contentView.addSubview(postDescriptionLabel)
@@ -66,10 +64,6 @@ class PostTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    //private func setupViews() {                                                                                                          // new-style code structure, so function not needed
-    //}                                                                                                                                    // new-style code structure, so function not needed
     
     
     private func setupConstraints() {
@@ -95,7 +89,7 @@ class PostTableViewCell: UITableViewCell {
             postCountViewsLabel.topAnchor.constraint(equalTo: postDescriptionLabel.bottomAnchor, constant: 16),
             postCountViewsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             postCountViewsLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
-            ])
+        ])
     }
     
     

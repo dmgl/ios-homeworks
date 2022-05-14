@@ -22,7 +22,3 @@ let postB = PostModel(author: "Author2", description: "Description 2", image: "i
 let postC = PostModel(author: "Author3", description: "Description 3", image: "image_literal_c", likes: 3000, views: 2000)
 let postD = PostModel(author: "Author4", description: "Description 4", image: "image_literal_d", likes: 4000, views: 1000)
 var posts: [PostModel] = [postA, postB, postC, postD]
-
-
-var photos: [Int] = [1,2,3,4]
-

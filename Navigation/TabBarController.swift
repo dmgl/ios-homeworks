@@ -9,7 +9,6 @@ import UIKit
 
 class TabBarController: UITabBarController {
     
-    
     private enum TabBarItem {
         
         case feed
@@ -38,15 +37,11 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        setupTabBarByMe()
-        //setupTabBarByTutor()
-        
-        
+        setupTabBar()
     }
     
     
-    private func setupTabBarByMe() {
+    private func setupTabBar() {
         
         let feed = UINavigationController(rootViewController: FeedViewController())
         let profile = UINavigationController(rootViewController: LogInViewController())
@@ -57,10 +52,10 @@ class TabBarController: UITabBarController {
         self.viewControllers = [feed, profile]
         self.setViewControllers([feed, profile], animated: true)
         
-        self.viewControllers?.forEach( {
-            print("rootViewController:")
-            print($0.tabBarItem.title ?? "No title", $0.tabBarItem.tag)
-        } )
+        //self.viewControllers?.forEach( {
+        //    print("rootViewController:")
+        //    print($0.tabBarItem.title ?? "No title", $0.tabBarItem.tag)
+        //} )
         
     }
     

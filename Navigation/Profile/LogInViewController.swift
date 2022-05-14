@@ -9,7 +9,6 @@ import UIKit
 
 class LogInViewController: UIViewController {
     
-    
     private let nc = NotificationCenter.default
     
     private lazy var scrollView: UIScrollView = {
@@ -31,29 +30,29 @@ class LogInViewController: UIViewController {
         logoView.translatesAutoresizingMaskIntoConstraints = false
         return logoView
     }()
-    private lazy var loginEmailOrTelTextField: UITextField = {
-        let loginEmailOrTelTextField = UITextField()
-        loginEmailOrTelTextField.placeholder = "Email or phone"
-        loginEmailOrTelTextField.clipsToBounds = true
-        loginEmailOrTelTextField.textColor = .black
-        loginEmailOrTelTextField.font = UIFont.systemFont(ofSize: 16)
-        loginEmailOrTelTextField.autocapitalizationType = .none
-        loginEmailOrTelTextField.backgroundColor = .systemGray5
-        loginEmailOrTelTextField.layer.borderColor = UIColor.lightGray.cgColor
-        loginEmailOrTelTextField.layer.borderWidth = 0.5
-        loginEmailOrTelTextField.layer.cornerRadius = 10
-        loginEmailOrTelTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: loginEmailOrTelTextField.frame.height))    // https://stackoverflow.com/a/33207638/3123886
-        loginEmailOrTelTextField.leftViewMode = .always                                                                                    // https://stackoverflow.com/a/33207638/3123886
-        loginEmailOrTelTextField.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]                                        // https://stackoverflow.com/a/50579958/3123886
-        loginEmailOrTelTextField.delegate = self                                                                                           // attention
-        loginEmailOrTelTextField.translatesAutoresizingMaskIntoConstraints = false
-        return loginEmailOrTelTextField
+    private lazy var loginEmailOrPhoneTextField: UITextField = {
+        let loginEmailOrPhoneTextField = UITextField()
+        loginEmailOrPhoneTextField.placeholder = "Email or phone"
+        loginEmailOrPhoneTextField.clipsToBounds = true
+        loginEmailOrPhoneTextField.textColor = .black
+        loginEmailOrPhoneTextField.font = UIFont.systemFont(ofSize: 16)
+        loginEmailOrPhoneTextField.autocapitalizationType = .none
+        loginEmailOrPhoneTextField.backgroundColor = .systemGray5
+        loginEmailOrPhoneTextField.layer.borderColor = UIColor.lightGray.cgColor
+        loginEmailOrPhoneTextField.layer.borderWidth = 0.5
+        loginEmailOrPhoneTextField.layer.cornerRadius = 10
+        loginEmailOrPhoneTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: loginEmailOrPhoneTextField.frame.height))  // https://stackoverflow.com/a/33207638/3123886
+        loginEmailOrPhoneTextField.leftViewMode = .always                                                                                    // https://stackoverflow.com/a/33207638/3123886
+        loginEmailOrPhoneTextField.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]                                        // https://stackoverflow.com/a/50579958/3123886
+        loginEmailOrPhoneTextField.delegate = self                                                                                           // attention
+        loginEmailOrPhoneTextField.translatesAutoresizingMaskIntoConstraints = false
+        return loginEmailOrPhoneTextField
     }()
     private lazy var loginPasswordTextField: UITextField = {
         let loginPasswordTextField = UITextField()
         loginPasswordTextField.placeholder = "Password"
         loginPasswordTextField.clipsToBounds = true
-        loginEmailOrTelTextField.textColor = .black
+        loginPasswordTextField.textColor = .black
         loginPasswordTextField.font = UIFont.systemFont(ofSize: 16)
         loginPasswordTextField.autocapitalizationType = .none
         loginPasswordTextField.backgroundColor = .systemGray5
@@ -61,7 +60,7 @@ class LogInViewController: UIViewController {
         loginPasswordTextField.layer.borderWidth = 0.5
         loginPasswordTextField.layer.cornerRadius = 10
         loginPasswordTextField.isSecureTextEntry = true
-        loginPasswordTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: loginEmailOrTelTextField.frame.height))      // https://stackoverflow.com/a/33207638/3123886
+        loginPasswordTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: loginEmailOrPhoneTextField.frame.height))    // https://stackoverflow.com/a/33207638/3123886
         loginPasswordTextField.leftViewMode = .always                                                                                      // https://stackoverflow.com/a/33207638/3123886
         loginPasswordTextField.layer.maskedCorners = [ .layerMaxXMaxYCorner, .layerMinXMaxYCorner ]                                        // https://stackoverflow.com/a/50579958/3123886
         loginPasswordTextField.delegate = self                                                                                             // attention
@@ -92,11 +91,10 @@ class LogInViewController: UIViewController {
         
         self.navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = .white
-        //self.setupViews()                                                                                                                // new-style code structure, so function not needed
         self.view.addSubview(self.scrollView)
         self.scrollView.addSubview(self.contentView)
         self.contentView.addSubview(self.logoView)
-        self.contentView.addSubview(self.loginEmailOrTelTextField)
+        self.contentView.addSubview(self.loginEmailOrPhoneTextField)
         self.contentView.addSubview(self.loginPasswordTextField)
         self.contentView.addSubview(self.loginButton)
         self.setupConstraints()
@@ -104,11 +102,8 @@ class LogInViewController: UIViewController {
     }
     
     
-    //private func setupViews() {                                                                                                          // new-style code structure, so function not needed
-    //}                                                                                                                                    // new-style code structure, so function not needed
-    
-    
     private func setupConstraints() {
+        
         NSLayoutConstraint.activate([
             self.scrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             self.scrollView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
@@ -125,13 +120,13 @@ class LogInViewController: UIViewController {
             self.logoView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor),
             self.logoView.heightAnchor.constraint(equalToConstant: 100),
             self.logoView.widthAnchor.constraint(equalToConstant: 100),
-            self.loginEmailOrTelTextField.topAnchor.constraint(equalTo: self.logoView.bottomAnchor, constant: 120),
-            self.loginEmailOrTelTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            self.loginEmailOrTelTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            self.loginEmailOrTelTextField.heightAnchor.constraint(equalToConstant: 50),
-            self.loginPasswordTextField.topAnchor.constraint(equalTo: self.loginEmailOrTelTextField.bottomAnchor),
-            self.loginPasswordTextField.leadingAnchor.constraint(equalTo: self.loginEmailOrTelTextField.leadingAnchor),
-            self.loginPasswordTextField.trailingAnchor.constraint(equalTo: self.loginEmailOrTelTextField.trailingAnchor),
+            self.loginEmailOrPhoneTextField.topAnchor.constraint(equalTo: self.logoView.bottomAnchor, constant: 120),
+            self.loginEmailOrPhoneTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            self.loginEmailOrPhoneTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            self.loginEmailOrPhoneTextField.heightAnchor.constraint(equalToConstant: 50),
+            self.loginPasswordTextField.topAnchor.constraint(equalTo: self.loginEmailOrPhoneTextField.bottomAnchor),
+            self.loginPasswordTextField.leadingAnchor.constraint(equalTo: self.loginEmailOrPhoneTextField.leadingAnchor),
+            self.loginPasswordTextField.trailingAnchor.constraint(equalTo: self.loginEmailOrPhoneTextField.trailingAnchor),
             self.loginPasswordTextField.heightAnchor.constraint(equalToConstant: 50),
             self.loginButton.topAnchor.constraint(equalTo: self.loginPasswordTextField.bottomAnchor, constant: 16),
             self.loginButton.leadingAnchor.constraint(equalTo: self.loginPasswordTextField.leadingAnchor),
@@ -139,7 +134,7 @@ class LogInViewController: UIViewController {
             self.loginButton.heightAnchor.constraint(equalToConstant: 50),
             // for correct work of full scrolling down need to set bottom anchor for latest element
             self.loginButton.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor),
-            ])
+        ])
     }
     
     
@@ -182,7 +177,7 @@ class LogInViewController: UIViewController {
     }
     
     
-    private func hideKeyboardWhenTappedAround() {                                                                                                  // https://stackoverflow.com/a/27079103/3123886
+    private func hideKeyboardWhenTappedAround() {                                                                                          // https://stackoverflow.com/a/27079103/3123886
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)

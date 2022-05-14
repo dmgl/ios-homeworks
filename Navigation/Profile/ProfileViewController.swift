@@ -9,7 +9,6 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .systemGray5
@@ -40,7 +39,6 @@ class ProfileViewController: UIViewController {
     private lazy var avatarTopOrCenter = screenW < screenH ? ((self.view.frame.height - self.view.frame.width) / 4) : 0
     private lazy var avatarLeadingOrCenter =  screenW < screenH ? 0 : ((self.view.frame.width - self.view.frame.height) / 2)
     private lazy var avatarWidthOrHeight = (screenW < screenH ? screenW : screenH - (self.tabBarController?.tabBar.frame.size.height)!)
-    
     
     private lazy var avatar: UIImageView = {
         let avatar = UIImageView()
@@ -84,7 +82,7 @@ class ProfileViewController: UIViewController {
         self.view.addSubview(avatar)
         self.setupConstraints()
         self.setupGestures()
-        }
+    }
     
     
     private func setupConstraints() {
@@ -111,7 +109,7 @@ class ProfileViewController: UIViewController {
             
             closeButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16),
             closeButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            ])
+        ])
     }
     
     
@@ -145,7 +143,7 @@ class ProfileViewController: UIViewController {
             }
         }
     }
-
+    
     
     @objc private func tapOnCloseButton(gesture: UITapGestureRecognizer) {
         self.avatarTopConstraint?.constant =  16
@@ -172,13 +170,13 @@ class ProfileViewController: UIViewController {
         }
     }
     
-//    @objc private func tapOnAdditionalView(gesture: UITapGestureRecognizer) {
-//        self.additionalView.alpha =  0
-//        self.closeButton.alpha = 0
-//        self.avatar.isHidden = true
-//    }
+    //    @objc private func tapOnAdditionalView(gesture: UITapGestureRecognizer) {
+    //        self.additionalView.alpha =  0
+    //        self.closeButton.alpha = 0
+    //        self.avatar.isHidden = true
+    //    }
     
-
+    
     
 }
 
@@ -192,17 +190,17 @@ extension ProfileViewController: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-                
+        
         if indexPath.section == 0 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell", for: indexPath) as! PhotosTableViewCell
-            let photo = photos[indexPath.row]
-            cell.setup(number: photo)
+            //let photo = photosProfile[indexPath.row]
+            cell.setup()
             cell.backgroundColor = .white
             cell.selectionStyle = .none
             cell.clipsToBounds = true
             return cell
-        
+            
         } else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostTableViewCell
@@ -212,16 +210,18 @@ extension ProfileViewController: UITableViewDataSource {
                        description: post.description,
                        likes: post.likes,
                        views: post.views)
+            cell.backgroundColor = .white
+            cell.selectionStyle = .none
             cell.clipsToBounds = true
             return cell
-        
+            
         }
         
     }
     
     
 }
-    
+
 
 extension ProfileViewController: UITableViewDelegate {
     
@@ -229,7 +229,7 @@ extension ProfileViewController: UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-
+    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerInSection = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
@@ -239,7 +239,7 @@ extension ProfileViewController: UITableViewDelegate {
             self.profileHeaderView.leadingAnchor.constraint(equalTo: headerInSection.leadingAnchor),
             self.profileHeaderView.trailingAnchor.constraint(equalTo: headerInSection.trailingAnchor),
             self.profileHeaderView.heightAnchor.constraint(equalToConstant: 220)
-            ])
+        ])
         return headerInSection
     }
     
@@ -249,18 +249,13 @@ extension ProfileViewController: UITableViewDelegate {
     }
     
     
-    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return (indexPath.section == 1 ? false : true)
-    }
-    
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 0 {
             let photoGallery = PhotosViewController()
             self.navigationController?.pushViewController(photoGallery, animated: true)
         }
-    
+        
     }
-
+    
 }

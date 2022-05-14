@@ -9,7 +9,6 @@ import UIKit
 
 class PhotosCollectionViewCell: UICollectionViewCell {
     
-    
     private lazy var photo: UIImageView = {
         let photo = UIImageView()
         photo.clipsToBounds = true
@@ -42,7 +41,7 @@ class PhotosCollectionViewCell: UICollectionViewCell {
             self.photo.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor),
             self.photo.leftAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leftAnchor),
             self.photo.rightAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.rightAnchor)
-            ])
+        ])
     }
     
     

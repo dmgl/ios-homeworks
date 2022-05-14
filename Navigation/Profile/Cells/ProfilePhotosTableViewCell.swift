@@ -101,7 +101,7 @@ class PhotosTableViewCell: UITableViewCell {
             
             self.photosLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 12),
             self.photosLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 12),
-
+            
             self.photosButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -12),
             self.photosButton.centerYAnchor.constraint(equalTo: self.photosLabel.centerYAnchor),
             
@@ -112,7 +112,7 @@ class PhotosTableViewCell: UITableViewCell {
             //self.photosStack.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width)),
             self.photosStack.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width)/4)
             
-            ])
+        ])
     }
     
     @objc private func viewPhotoGallery(_ textField: UITextField) {
@@ -122,11 +122,11 @@ class PhotosTableViewCell: UITableViewCell {
     }
     
     
-    func setup(number: Int) {
-        photo1.image = UIImage(named: "number_"+String(1))
-        photo2.image = UIImage(named: "number_"+String(2))
-        photo3.image = UIImage(named: "number_"+String(3))
-        photo4.image = UIImage(named: "number_"+String(4))
+    func setup() {
+        photo1.image = UIImage(named: "number_"+String(photosProfile[0]))
+        photo2.image = UIImage(named: "number_"+String(photosProfile[1]))
+        photo3.image = UIImage(named: "number_"+String(photosProfile[2]))
+        photo4.image = UIImage(named: "number_"+String(photosProfile[3]))
     }
     
     
