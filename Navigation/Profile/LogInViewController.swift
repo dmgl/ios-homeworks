@@ -60,13 +60,28 @@ class LogInViewController: UIViewController {
         loginPasswordTextField.layer.borderWidth = 0.5
         loginPasswordTextField.layer.cornerRadius = 10
         loginPasswordTextField.isSecureTextEntry = true
-        loginPasswordTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: loginEmailOrPhoneTextField.frame.height))    // https://stackoverflow.com/a/33207638/3123886
+        loginPasswordTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: loginPasswordTextField.frame.height))      // https://stackoverflow.com/a/33207638/3123886
         loginPasswordTextField.leftViewMode = .always                                                                                      // https://stackoverflow.com/a/33207638/3123886
         loginPasswordTextField.layer.maskedCorners = [ .layerMaxXMaxYCorner, .layerMinXMaxYCorner ]                                        // https://stackoverflow.com/a/50579958/3123886
         loginPasswordTextField.delegate = self                                                                                             // attention
         loginPasswordTextField.translatesAutoresizingMaskIntoConstraints = false
         return loginPasswordTextField
     }()
+    private lazy var loginTextFieldsAlert: UILabel = {
+        let loginPasswordTextFieldAlert = UILabel()
+        loginPasswordTextFieldAlert.clipsToBounds = true
+        loginPasswordTextFieldAlert.textColor = .red
+        loginPasswordTextFieldAlert.font = UIFont.systemFont(ofSize: 12)
+        loginPasswordTextFieldAlert.layer.borderColor = UIColor.lightGray.cgColor
+        loginPasswordTextFieldAlert.translatesAutoresizingMaskIntoConstraints = false
+        return loginPasswordTextFieldAlert
+    }()
+    private var loginTextFieldsAlertTopConstraint: NSLayoutConstraint?
+    private var loginTextFieldsAlertLeadingConstraint: NSLayoutConstraint?
+    private var loginTextFieldsAlertTrailingConstraint: NSLayoutConstraint?
+    private var loginTextFieldsAlertBottomConstraint: NSLayoutConstraint?
+    private var loginTextFieldsAlertHeightConstraint: NSLayoutConstraint?
+    
     private lazy var loginButton: UIButton = {
         let loginButton = UIButton()
         loginButton.setTitle("Log In", for: .normal)
@@ -96,6 +111,7 @@ class LogInViewController: UIViewController {
         self.contentView.addSubview(self.logoView)
         self.contentView.addSubview(self.loginEmailOrPhoneTextField)
         self.contentView.addSubview(self.loginPasswordTextField)
+        self.contentView.addSubview(self.loginTextFieldsAlert)
         self.contentView.addSubview(self.loginButton)
         self.setupConstraints()
         self.hideKeyboardWhenTappedAround()                                                                                                // https://stackoverflow.com/a/27079103/3123886
@@ -128,18 +144,82 @@ class LogInViewController: UIViewController {
             self.loginPasswordTextField.leadingAnchor.constraint(equalTo: self.loginEmailOrPhoneTextField.leadingAnchor),
             self.loginPasswordTextField.trailingAnchor.constraint(equalTo: self.loginEmailOrPhoneTextField.trailingAnchor),
             self.loginPasswordTextField.heightAnchor.constraint(equalToConstant: 50),
-            self.loginButton.topAnchor.constraint(equalTo: self.loginPasswordTextField.bottomAnchor, constant: 16),
-            self.loginButton.leadingAnchor.constraint(equalTo: self.loginPasswordTextField.leadingAnchor),
-            self.loginButton.trailingAnchor.constraint(equalTo: self.loginPasswordTextField.trailingAnchor),
+            self.loginButton.topAnchor.constraint(equalTo: self.loginTextFieldsAlert.bottomAnchor, constant: 16),
+            self.loginButton.leadingAnchor.constraint(equalTo: self.loginEmailOrPhoneTextField.leadingAnchor),
+            self.loginButton.trailingAnchor.constraint(equalTo: self.loginEmailOrPhoneTextField.trailingAnchor),
             self.loginButton.heightAnchor.constraint(equalToConstant: 50),
             // for correct work of full scrolling down need to set bottom anchor for latest element
             self.loginButton.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor),
-        ])
+            ])
+        
+        loginTextFieldsAlertTopConstraint = loginTextFieldsAlert.topAnchor.constraint(equalTo: self.loginPasswordTextField.bottomAnchor, constant: 2)
+        loginTextFieldsAlertLeadingConstraint = loginTextFieldsAlert.leadingAnchor.constraint(equalTo: self.loginPasswordTextField.leadingAnchor, constant: 8)
+        loginTextFieldsAlertTrailingConstraint = loginTextFieldsAlert.trailingAnchor.constraint(equalTo: self.loginPasswordTextField.trailingAnchor, constant: 8)
+        loginTextFieldsAlertHeightConstraint = loginTextFieldsAlert.heightAnchor.constraint(equalToConstant: 0)
+        NSLayoutConstraint.activate([loginTextFieldsAlertTopConstraint,
+                                     loginTextFieldsAlertLeadingConstraint,
+                                     loginTextFieldsAlertTrailingConstraint,
+                                     loginTextFieldsAlertHeightConstraint].compactMap({ $0 }))
+        
+        
     }
     
     
     @objc private func loginButtonTapped() {
+        guard let emailOrPhoneText = self.loginEmailOrPhoneTextField.text else {print("check"); return}
+        guard let passwordText = self.loginPasswordTextField.text else {print ("check"); return}
+        // login screen: task 1
+        if emailOrPhoneText.isEmpty {
+            UIView.animate(withDuration: 0.2, delay: 0) {
+                self.loginEmailOrPhoneTextField.layer.borderColor = UIColor.red.cgColor
+                self.loginEmailOrPhoneTextField.layer.borderWidth = 1
+                self.loginTextFieldsAlert.text = "Email or phone field cannot be empty"
+                self.loginTextFieldsAlertHeightConstraint?.constant = 16
+                self.view.layoutIfNeeded()
+            }
+            completion: { _ in
+                UIView.animate(withDuration: 0.5, delay: 0.0) {
+                    self.loginEmailOrPhoneTextField.layer.borderColor = UIColor.lightGray.cgColor
+                    self.loginEmailOrPhoneTextField.layer.borderWidth = 0.5
+                }
+            }
+            return
+        }
+        if passwordText.isEmpty {
+            UIView.animate(withDuration: 0.2, delay: 0) {
+                self.loginPasswordTextField.layer.borderColor = UIColor.red.cgColor
+                self.loginPasswordTextField.layer.borderWidth = 1
+                self.loginTextFieldsAlert.text = "Password field cannot be empty"
+                self.loginTextFieldsAlertHeightConstraint?.constant = 16
+                self.view.layoutIfNeeded()
+            }
+            completion: { _ in
+                UIView.animate(withDuration: 0.5, delay: 0.0) {
+                    self.loginPasswordTextField.layer.borderColor = UIColor.lightGray.cgColor
+                    self.loginPasswordTextField.layer.borderWidth = 0.5
+                }
+            }
+            return
+        }
+        // login screen: task 2
+        if (passwordText.count < minCredentialsLength) || (emailOrPhoneText.count < minCredentialsLength) {
+            UIView.animate(withDuration: 0.2, delay: 0) {
+                self.loginTextFieldsAlert.text = "All credentials must be at least 5 symbols"
+                self.loginTextFieldsAlertHeightConstraint?.constant = 16
+                self.view.layoutIfNeeded()
+            }
+            return
+        }
+        // login screen: task 3
+        if (emailOrPhoneText != defaultEmailOrPhone ) || (passwordText != defaultPassword) {
+            let alert = UIAlertController(title: "Oops", message: "Your login or password is incorrect\nPlease check it", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .cancel)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+        }
+        
         self.navigationController?.pushViewController(ProfileViewController(), animated: true)
+        
     }
     
     
@@ -186,6 +266,12 @@ class LogInViewController: UIViewController {
     
     @objc private func dismissKeyboard() {                                                                                                 // https://stackoverflow.com/a/27079103/3123886
         self.view.endEditing(true)
+        
+        UIView.animate(withDuration: 0.2, delay: 0) {
+            self.loginTextFieldsAlertHeightConstraint?.constant = 0
+            self.view.layoutIfNeeded()
+        }
+    
     }
     
     
