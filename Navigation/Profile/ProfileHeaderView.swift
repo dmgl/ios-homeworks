@@ -136,8 +136,24 @@ class ProfileHeaderView: UIView {
     
     
     @objc private func showStatusButtonTapped() {
-        status.text = statusText
-        print("Print to console:", status.text ?? "check this")
+        if statusText == "" {
+            UIView.animate(withDuration: 0.2, delay: 0) {
+                self.statusTextField.shake(count: 4, for: 0.2, withTranslation: 5)
+                self.statusTextField.layer.borderColor = UIColor.red.cgColor
+            } completion: { _ in
+                UIView.animate(withDuration: 0.5, delay: 0) {
+                    self.statusTextField.layer.borderColor = UIColor.black.cgColor
+                    self.statusTextField.placeholder = "..."
+                }
+            }
+            //let alert = UIAlertController(title: "Oops", message: "Status field is empty\nPlease specify some text", preferredStyle: .alert)
+            //let action = UIAlertAction(title: "Ok", style: .cancel)
+            //alert.addAction(action)
+            //self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+        } else {
+            print("Print to console:", status.text ?? "")
+            status.text = statusText
+        }
     }
     
     

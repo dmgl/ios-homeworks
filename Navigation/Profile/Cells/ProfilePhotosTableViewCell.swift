@@ -131,17 +131,3 @@ class PhotosTableViewCell: UITableViewCell {
     
     
 }
-
-
-extension UIView {                                                                                           // https://stackoverflow.com/a/51471763/3123886
-    var parentViewController: UIViewController? {
-        var parentResponder: UIResponder? = self
-        while parentResponder != nil {
-            parentResponder = parentResponder!.next
-            if let viewController = parentResponder as? UIViewController {
-                return viewController
-            }
-        }
-        return nil
-    }
-}

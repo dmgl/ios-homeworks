@@ -7,6 +7,15 @@
 
 import UIKit
 
+protocol PostDelegate: AnyObject {
+    func increaseLikes(cell: PostTableViewCell)
+    func increaseViews(cell: PostTableViewCell)
+}
+
+protocol DetailedPostDelegate: AnyObject {
+    func increaseLikes(index: Int)
+}
+
 class ProfileViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
@@ -177,7 +186,6 @@ class ProfileViewController: UIViewController {
     //    }
     
     
-    
 }
 
 
@@ -194,7 +202,6 @@ extension ProfileViewController: UITableViewDataSource {
         if indexPath.section == 0 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell", for: indexPath) as! PhotosTableViewCell
-            //let photo = photosProfile[indexPath.row]
             cell.setup()
             cell.backgroundColor = .white
             cell.selectionStyle = .none
@@ -207,18 +214,52 @@ extension ProfileViewController: UITableViewDataSource {
             let post = posts[indexPath.row]
             cell.setup(author: post.author,
                        image: post.image,
-                       description: post.description,
+                       description: post.description.shorted(to: 100),
                        likes: post.likes,
-                       views: post.views)
+                       views: post.views,
+                       liked: false)
             cell.backgroundColor = .white
             cell.selectionStyle = .none
             cell.clipsToBounds = true
+            
+            cell.delegate = self
+            
+            
+            cell.increaseLikesClosure = {
+                        guard let indexPathRow = tableView.indexPath(for: cell)?.row else { return }
+                        if !posts[indexPathRow].liked {
+                            posts[indexPathRow].likes += 1
+                            posts[indexPathRow].liked = true
+                            let indexPosition = IndexPath(row: indexPathRow, section: 1)
+                            tableView.reloadRows(at: [indexPosition], with: .none)
+                        }
+            }
+            
+            cell.increaseViewsClosure = {
+                        guard let indexPathRow = tableView.indexPath(for: cell)?.row else { return }
+                        posts[indexPathRow].views += 1
+                        let indexPosition = IndexPath(row: indexPathRow, section: 1)
+                        tableView.reloadRows(at: [indexPosition], with: .none)
+                        let detailedPost = DetailedPostView()
+                        detailedPost.setup(author: posts[indexPathRow].author,
+                                           image: posts[indexPathRow].image,
+                                           description: posts[indexPathRow].description,
+                                           likes: posts[indexPathRow].likes,
+                                           views: posts[indexPathRow].views,
+                                           liked: posts[indexPathRow].liked)
+                        detailedPost.postNumber = indexPathRow
+                        detailedPost.delegateDetailed = self
+                        self.navigationController?.pushViewController(detailedPost, animated: true)
+            }
+            
             return cell
             
         }
         
     }
     
+    
+
     
 }
 
@@ -256,6 +297,57 @@ extension ProfileViewController: UITableViewDelegate {
             self.navigationController?.pushViewController(photoGallery, animated: true)
         }
         
+    }
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            posts.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    
+}
+
+extension ProfileViewController: PostDelegate {
+    
+    func increaseLikes(cell: PostTableViewCell) {
+//        guard let indexPathRow = tableView.indexPath(for: cell)?.row else { return }
+//        if !posts[indexPathRow].liked {
+//            posts[indexPathRow].likes += 1
+//            posts[indexPathRow].liked = true
+//            let indexPosition = IndexPath(row: indexPathRow, section: 1)
+//            tableView.reloadRows(at: [indexPosition], with: .none)
+//        }
+    }
+    
+    func increaseViews(cell: PostTableViewCell) {
+//        guard let indexPathRow = tableView.indexPath(for: cell)?.row else { return }
+//        posts[indexPathRow].views += 1
+//        let indexPosition = IndexPath(row: indexPathRow, section: 1)
+//        tableView.reloadRows(at: [indexPosition], with: .none)
+//        let detailedPost = DetailedPostView()
+//        detailedPost.setup(author: posts[indexPathRow].author,
+//                           image: posts[indexPathRow].image,
+//                           description: posts[indexPathRow].description,
+//                           likes: posts[indexPathRow].likes,
+//                           views: posts[indexPathRow].views,
+//                           liked: posts[indexPathRow].liked)
+//        detailedPost.postNumber = indexPathRow
+//        detailedPost.delegateDetailed = self
+//        self.navigationController?.pushViewController(detailedPost, animated: true)
+    }
+    
+}
+
+extension ProfileViewController: DetailedPostDelegate {
+    
+    func increaseLikes(index: Int) {
+        posts[index].likes += 1
+        posts[index].liked = true
+        let indexPosition = IndexPath(row: index, section: 1)
+        tableView.reloadRows(at: [indexPosition], with: .none)
     }
     
 }

@@ -14,7 +14,7 @@ class LogInViewController: UIViewController {
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .white
-        scrollView.showsVerticalScrollIndicator = true
+        scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
@@ -125,6 +125,7 @@ class LogInViewController: UIViewController {
             self.scrollView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
             self.scrollView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor),
             self.scrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+
             self.contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             self.contentView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
             self.contentView.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
@@ -132,18 +133,22 @@ class LogInViewController: UIViewController {
             self.contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             self.contentView.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor),
             self.contentView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor),
+            
             self.logoView.topAnchor.constraint(lessThanOrEqualTo: self.scrollView.topAnchor, constant: 120),
             self.logoView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor),
             self.logoView.heightAnchor.constraint(equalToConstant: 100),
             self.logoView.widthAnchor.constraint(equalToConstant: 100),
+            
             self.loginEmailOrPhoneTextField.topAnchor.constraint(equalTo: self.logoView.bottomAnchor, constant: 120),
             self.loginEmailOrPhoneTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             self.loginEmailOrPhoneTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             self.loginEmailOrPhoneTextField.heightAnchor.constraint(equalToConstant: 50),
+            
             self.loginPasswordTextField.topAnchor.constraint(equalTo: self.loginEmailOrPhoneTextField.bottomAnchor),
             self.loginPasswordTextField.leadingAnchor.constraint(equalTo: self.loginEmailOrPhoneTextField.leadingAnchor),
             self.loginPasswordTextField.trailingAnchor.constraint(equalTo: self.loginEmailOrPhoneTextField.trailingAnchor),
             self.loginPasswordTextField.heightAnchor.constraint(equalToConstant: 50),
+            
             self.loginButton.topAnchor.constraint(equalTo: self.loginTextFieldsAlert.bottomAnchor, constant: 16),
             self.loginButton.leadingAnchor.constraint(equalTo: self.loginEmailOrPhoneTextField.leadingAnchor),
             self.loginButton.trailingAnchor.constraint(equalTo: self.loginEmailOrPhoneTextField.trailingAnchor),
