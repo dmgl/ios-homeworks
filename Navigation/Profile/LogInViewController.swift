@@ -60,7 +60,7 @@ class LogInViewController: UIViewController {
         loginPasswordTextField.layer.borderWidth = 0.5
         loginPasswordTextField.layer.cornerRadius = 10
         loginPasswordTextField.isSecureTextEntry = true
-        loginPasswordTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: loginPasswordTextField.frame.height))      // https://stackoverflow.com/a/33207638/3123886
+        loginPasswordTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: loginPasswordTextField.frame.height))        // https://stackoverflow.com/a/33207638/3123886
         loginPasswordTextField.leftViewMode = .always                                                                                      // https://stackoverflow.com/a/33207638/3123886
         loginPasswordTextField.layer.maskedCorners = [ .layerMaxXMaxYCorner, .layerMinXMaxYCorner ]                                        // https://stackoverflow.com/a/50579958/3123886
         loginPasswordTextField.delegate = self                                                                                             // attention

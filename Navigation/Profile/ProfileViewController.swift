@@ -39,15 +39,6 @@ class ProfileViewController: UIViewController {
     private var avatarLeadingConstraint: NSLayoutConstraint?
     private var avatarWidthConstraint: NSLayoutConstraint?
     private var avatarHeightConstraint: NSLayoutConstraint?
-    private var additionalTopConstraint: NSLayoutConstraint?
-    private var additionalLeadingConstraint: NSLayoutConstraint?
-    private var additionalWidthConstraint: NSLayoutConstraint?
-    private var additionalHeightConstraint: NSLayoutConstraint?
-    private lazy var screenW = UIScreen.main.bounds.width
-    private lazy var screenH = UIScreen.main.bounds.height
-    private lazy var avatarTopOrCenter = screenW < screenH ? ((self.view.frame.height - self.view.frame.width) / 4) : 0
-    private lazy var avatarLeadingOrCenter =  screenW < screenH ? 0 : ((self.view.frame.width - self.view.frame.height) / 2)
-    private lazy var avatarWidthOrHeight = (screenW < screenH ? screenW : screenH - (self.tabBarController?.tabBar.frame.size.height)!)
     
     private lazy var avatar: UIImageView = {
         let avatar = UIImageView()
@@ -72,7 +63,7 @@ class ProfileViewController: UIViewController {
     }()
     private lazy var additionalView: UIView = {
         let additionalView = UIView()
-        additionalView.isUserInteractionEnabled = false                             // attention
+        additionalView.isUserInteractionEnabled = true                              // attention
         additionalView.alpha = 0                                                    //
         additionalView.backgroundColor = .black                                     //
         additionalView.translatesAutoresizingMaskIntoConstraints = false
@@ -135,14 +126,10 @@ class ProfileViewController: UIViewController {
     @objc private func tapOnAvatar(gesture: UITapGestureRecognizer) {
         self.avatar.isHidden = false
         UIView.animate(withDuration: 0.5, delay: 0) {
-            self.avatarTopConstraint?.constant =  self.avatarTopOrCenter
-            self.avatarLeadingConstraint?.constant =  self.avatarLeadingOrCenter
-            self.avatarWidthConstraint?.constant = self.avatarWidthOrHeight
-            self.avatarHeightConstraint?.constant = self.avatarWidthOrHeight
-            self.additionalTopConstraint?.constant = 0
-            self.additionalLeadingConstraint?.constant = 0
-            self.additionalWidthConstraint?.constant = self.screenW
-            self.additionalHeightConstraint?.constant = self.screenH
+            self.avatarTopConstraint?.constant =  ((self.view.frame.height - self.view.frame.width) / 4)
+            self.avatarLeadingConstraint?.constant =  0
+            self.avatarWidthConstraint?.constant = UIScreen.main.bounds.width
+            self.avatarHeightConstraint?.constant = UIScreen.main.bounds.width
             self.avatar.layer.cornerRadius = 0                                              //
             self.additionalView.alpha = 0.5                                                 //
             self.view.layoutIfNeeded()
@@ -166,7 +153,7 @@ class ProfileViewController: UIViewController {
             self.view.layoutIfNeeded()
         } completion: { _ in
             UIView.animate(withDuration: 0.5, delay: 0.0) {
-                self.avatarTopConstraint?.constant =  -self.screenH
+                self.avatarTopConstraint?.constant = -1000
                 self.avatarLeadingConstraint?.constant = 0
                 self.view.layoutIfNeeded()
             } completion: { _ in
