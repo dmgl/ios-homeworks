@@ -94,9 +94,14 @@ class PhotosViewController: UIViewController {
         ])
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.tabBarController?.tabBar.isHidden = true
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.tabBarController?.tabBar.isHidden = false
         self.navigationController?.navigationBar.isHidden = true
+        tapOnCloseButton()
     }
     
     private func setupGestures() {
@@ -110,6 +115,7 @@ class PhotosViewController: UIViewController {
     
     
     @objc func tapOnCloseButton() {
+        self.navigationItem.setHidesBackButton(false, animated: true)
         UIView.animate(withDuration: 0.2, delay: 0) {
             self.additionalPhoto.isHidden = true
             self.additionalPhoto.image = nil
@@ -141,6 +147,7 @@ extension PhotosViewController: UICollectionViewDataSource {
         self.additionalPhoto = cell.photo
         
         cell.tapOnPhotoClosure = {
+            self.navigationItem.setHidesBackButton(true, animated: true)
             self.view.addSubview(self.additionalPhoto)
             UIView.animate(withDuration: 0.2, delay: 0) {
                 self.additionalPhoto.isUserInteractionEnabled = false
