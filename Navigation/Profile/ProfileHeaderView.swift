@@ -9,7 +9,6 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
-    
     private lazy var statusText: String = ""
     
     lazy var avatar: UIImageView = {
@@ -108,15 +107,15 @@ class ProfileHeaderView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-        
+    
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             
-//            self.topAnchor.constraint(equalTo: self.topAnchor),
-//            self.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-//            self.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-//            self.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            //            self.topAnchor.constraint(equalTo: self.topAnchor),
+            //            self.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            //            self.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            //            self.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
             self.infoStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
             self.infoStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
@@ -137,8 +136,24 @@ class ProfileHeaderView: UIView {
     
     
     @objc private func showStatusButtonTapped() {
-        status.text = statusText
-        print("Print to console:", status.text ?? "check this")
+        if statusText == "" {
+            UIView.animate(withDuration: 0.2, delay: 0) {
+                self.statusTextField.shake(count: 4, for: 0.2, withTranslation: 5)
+                self.statusTextField.layer.borderColor = UIColor.red.cgColor
+            } completion: { _ in
+                UIView.animate(withDuration: 0.5, delay: 0) {
+                    self.statusTextField.layer.borderColor = UIColor.black.cgColor
+                    self.statusTextField.placeholder = "..."
+                }
+            }
+            //let alert = UIAlertController(title: "Oops", message: "Status field is empty\nPlease specify some text", preferredStyle: .alert)
+            //let action = UIAlertAction(title: "Ok", style: .cancel)
+            //alert.addAction(action)
+            //self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+        } else {
+            print("Print to console:", status.text ?? "")
+            status.text = statusText
+        }
     }
     
     
@@ -152,8 +167,8 @@ class ProfileHeaderView: UIView {
         tap.cancelsTouchesInView = false
         self.addGestureRecognizer(tap)
     }
-
-
+    
+    
     @objc private func dismissKeyboard() {                                                                                                 // https://stackoverflow.com/a/27079103/3123886
         self.endEditing(true)
     }
@@ -161,7 +176,7 @@ class ProfileHeaderView: UIView {
 }
 
 
-extension ProfileHeaderView: UITextFieldDelegate {                                                                                       // attention
+extension ProfileHeaderView: UITextFieldDelegate {                                                                                         // attention
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.endEditing(true)
         return true

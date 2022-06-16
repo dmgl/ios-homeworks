@@ -9,8 +9,9 @@ import UIKit
 
 class PhotosCollectionViewCell: UICollectionViewCell {
     
+    var tapOnPhotoClosure: (()->())?
     
-    private lazy var photo: UIImageView = {
+    lazy var photo: UIImageView = {
         let photo = UIImageView()
         photo.clipsToBounds = true
         photo.layer.borderWidth = 1
@@ -27,6 +28,7 @@ class PhotosCollectionViewCell: UICollectionViewCell {
         
         self.contentView.addSubview(photo)
         self.setupConstraints()
+        self.setupGestures()
         
     }
     
@@ -42,7 +44,19 @@ class PhotosCollectionViewCell: UICollectionViewCell {
             self.photo.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor),
             self.photo.leftAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leftAnchor),
             self.photo.rightAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.rightAnchor)
-            ])
+        ])
+    }
+    
+    
+    private func setupGestures() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
+        self.photo.addGestureRecognizer(tapGesture)
+        self.photo.isUserInteractionEnabled = true
+    }
+    
+    
+    @objc func tap() {
+        tapOnPhotoClosure?()
     }
     
     
